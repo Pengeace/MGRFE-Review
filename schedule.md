@@ -26,18 +26,17 @@
 6.
 > In Section 2.3.1 the authors use the T-test and MIC to achieve a first-cut reduction in the feature set.  I have found that using the so-called "volcano plot," which combines the T-test with a fold-change criterion, works better than just the T-test alone.
 
-4(description). 
-> The authors' preferred method of genetic algorithms is known to lack theoretical foundations, to be very sensitive to various parameters in the algorithm, and to be extremely time consuming.  In contrast, the original paper where RFE was proposed, by Isabel Guyon, used the support vector machine (SVM) which is very fast and for which lots of theoretical results are available.  This is another reason for my not being overly enthusiastic about the paper.
-
 2(description).
 > The paper is a mixture of techniques that are by now standard in the world of computational biology.  Given a very large number of features, first use some pre-filtering to eliminate perhaps 90% to 95% of the features, and then use recursive feature elimination (RFE) on the remaining features.  I could not find any compelling evidence that the proposed approach is superior to the existing methods.
+
+4(description). 
+> The authors' preferred method of genetic algorithms is known to lack theoretical foundations, to be very sensitive to various parameters in the algorithm, and to be extremely time consuming.  In contrast, the original paper where RFE was proposed, by Isabel Guyon, used the support vector machine (SVM) which is very fast and for which lots of theoretical results are available.  This is another reason for my not being overly enthusiastic about the paper.
 
 ---
 
 **Three star:**
 
 ## Reviewer1
-
 
 1.	
 > In the introduction section author has mentioned the phrase "lack an explicit decline of the feature number". The particular phrase is not clear. Please elaborate and explain clearly the lacuna of swarm intelligence based gene selection approach.
@@ -60,7 +59,7 @@
 ## Reviewer2
 
 1. 
-> There are several places where the authors do not appear to be aware of simple statistical facts.  For instance, the accuracy is a weighted average of the sensitivity and the specificity.  But the authors talk as though they are independent parameters.  Equation (1) in the right column of page 1 is too wide.
+> First of all, the paper is described as "Survey/Tutorial," but it appears to describe a claimed original contribution by the authors, namely the MGRFE algorithm.  The proposed new algorithm is compared against several existing algorithms.  Therefore, if at all the paper is to be published, it should be as a regular research paper, and not as a survey/tutorial paper.
 
 5. 
 > There are several places where the authors do not appear to be aware of simple statistical facts.  For instance, the accuracy is a weighted average of the sensitivity and the specificity.  But the authors talk as though they are independent parameters.  Equation (1) in the right column of page 1 is too wide.
