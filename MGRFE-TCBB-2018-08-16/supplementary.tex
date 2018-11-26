@@ -1,0 +1,260 @@
+\documentclass[10pt,journal,compsoc]{IEEEtran}
+
+
+\usepackage{url}
+\usepackage{booktabs}
+\usepackage{threeparttable}
+\usepackage{multirow}
+\usepackage[ruled,vlined]{algorithm2e}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{fullpage}
+\usepackage{float}
+\usepackage[colorlinks,allcolors=black]{hyperref}
+\usepackage[nocompress]{cite}
+\renewcommand{\arraystretch}{1.2}
+
+
+\begin{document}
+
+	\title{Supplementary For\\
+		MGRFE: multilayer recursive feature elimination based on an embedded genetic algorithm for cancer classification}
+	
+	\author{Cheng~Peng,
+		Xinyu~Wu,
+		Wen~Yuan,
+		Xinran~Zhang,
+		Yu~Zhang,
+		and~Ying~Li
+		\IEEEcompsocitemizethanks{\IEEEcompsocthanksitem C. Peng, X. Wu, W. Yuan, X. Zhang, Y. Zhang, and Y. Li are with the College of Computer Science and Technology, Key Laboratory of Symbol Computation and Knowledge Engineering of Ministry of Education, Jilin University, Changchun 130012, China.\protect\\
+
+			
+		\IEEEcompsocthanksitem Y. Li is the correspondence author. Email: liying@jlu.edu.cn.}
+		}
+
+
+	\maketitle
+	
+	\section*{S1. The datasets used in this study}
+	\addcontentsline{toc}{section}{S1. The datasets used in this study}
+	This study used total 19 benchmark microarrays subdivided into two large Datasets to validate the performance of our proposed MGRFE. In Tables \ref{Tab:dataset 1} and \ref{Tab:dataset 2}, we provide the brief description of each dataset in Dataset One and Dataset Two.
+
+	\begin{table*}[htp] \scriptsize
+	\centering\caption{Summary of the 17 binary classification datasets in Dataset One from ref. \cite{W16}}
+	\resizebox{1\textwidth}{!}
+	   {\begin{threeparttable}
+	   \label{Tab:dataset 1}
+	   \begin{tabular}{lllll}
+	       \toprule
+	       ID & Dataset & Samples & Features & Summary\\
+	       \midrule
+	       1 & DLBCL\tnote{1} & 77 & 7 129 & DLBCL patients (58) and follicular lymphoma (19)\\
+	       2 & Pros(Prostate)\tnote{1} & 102 & 12 625 & prostate (52) and non-prostate (50)\\
+	       3 & Colon\tnote{2} & 62 & 2 000 & tumour (40) and normal (22)\\
+	       4 & Leuk(Leukaemia)\tnote{2} & 72 & 7 129 & ALL (47) and AML (25)\\
+	       5 & Mye(Myeloma)\tnote{3} & 173 & 12 625 & presence (137) and absence (36) of focallesions of bone\\
+	       6 & ALL1\tnote{1} & 128 & 12 625 & B-cell (95) and T-cell (33)\\
+	       7 & ALL2\tnote{1} & 100 & 12 625 & patients that did (65) and did not (35) relapse\\
+	       8 & ALL3\tnote{1} & 125 & 12 625 & with (24) and without (101) multidrug resistance\\
+	       9 & ALL4\tnote{1} & 93 & 12 625 & with (26) and without (67) the t(9;22) chromosome translocation\\
+	       10 & CNS\tnote{1} & 60 & 7 129 & medulloblastoma survivors (39) and treatment failures (21)\\
+	       11 & Lym(Lymphoma)\tnote{1} & 45 & 4 026 & germinalcentre (22) and activated B-like DLBCL (23)\\
+	       12 & Adeno(Adenoma)\tnote{1} & 36 & 7 457 & colon adenocarcinoma (18) and normal (18)\\
+	       13 & Gas(Gastric)\tnote{3} & 65 & 22 645 & tumors (29) and non-malignants (36)\\
+	       14 & Gas1(Gastric1)\tnote{3} & 144 & 22 283 & non-cardia (72) of gastric and normal (72)\\
+	       15 & Gas2(Gastric2)\tnote{3} & 124 & 22 283 & cardia (62) of gastric and normal (62)\\
+	       16 & T1D\tnote{3} & 101 & 54 675 & T1D (57) and healthy control (44)\\
+	       17 & Stroke\tnote{3} & 40 & 54 675 & ischemic stroke (20) and control (20)\\
+	       \bottomrule
+	   \end{tabular}
+	   \begin{tablenotes}
+	       % \tiny
+	     \item In Tables \ref{Tab:dataset 1} and \ref{Tab:dataset 2}, "Samples" and "Features" indicate the total sample number and feature number of each dataset, and "Summary" column describes the sample classes and the related sample numbers in parenthesis.
+	     \item [1] These datasets were retrieved from \url{http://www.broadinstitute.org/cgi-bin/cancer/datasets.cgi}.
+	     \item [2] Colon and Leuk datasets were downloaded from the R/Bioconductor packages \textit{colonCA} and \textit{golubEsets}, respectively.
+	     \item [3] These datasets were downloaded from \url{https://www.ncbi.nlm.nih.gov/geo/}.
+	   \end{tablenotes}
+	 \end{threeparttable}}
+	\end{table*}
+
+
+	\begin{table*}[htbp] \scriptsize
+	\centering\caption{Summary of the 3 classification datasets in Dataset Two from ref. \cite{W15}}
+	\resizebox{1\textwidth}{!}
+	 {\begin{threeparttable}
+	   \label{Tab:dataset 2}
+	   \begin{tabular}{llllll}
+	       \toprule
+	       ID & Dataset & Classes & Samples & Features & Summary\\
+	       \midrule
+	       1 & SRBCT\tnote{1} & 4 & 88 & 2 308 & EWS (29), NHL (11), NB (18) and RMS (25)\\
+	       2 & ALL\_AML\tnote{2} & 2 & 72 & 7 129 & ALL (47) and AML (25)\\
+	       3 & MLL\tnote{3} & 3 & 72 & 12 582 & ALL (24), MLL (20) and AML (28)\\
+	       \bottomrule
+	   \end{tabular}
+	   \begin{tablenotes}
+	       % \tiny
+	     \item [1] SRBCT dataset was downloaded from \url{http://research.nhgri.nih.gov/microarray/Supplement/}. This dataset includes 88 samples totally, but five of them are irrelevant and thus only 83 samples were used.
+	     \item [2] ALL\_AML in Dataset Two and Leuk in Dataset One are the same dataset in actual.
+	     \item [3] MLL dataset was retrieved from \url{http://portals.broadinstitute.org/cgi-bin/cancer/publications/pub\_paper.cgi?paper\_id=63}.
+	   \end{tablenotes}
+	 \end{threeparttable}}
+	\end{table*}
+ 
+	\section*{S2. Pseudocode of the proposed MGRFE}
+	\addcontentsline{toc}{section}{S2. Pseudocode of the proposed MGRFE}
+	In the main manuscript, we provided the flow chart of the proposed MGRFE in Fig. 2. Here, we supplement the pseudocodes of our methodology. Pseudocode \ref{Algo:MGRFE} describes the complete procedure of MGRFE. Pseudocodes \ref{Algo:GaRFE} and \ref{Algo:GA} explain the two key processes of MGRFE: GaRFE and embedded GA. 
+	
+	\begin{algorithm}
+		\SetKwInOut{Input}{Input}
+		\SetKwInOut{Output}{Output}
+		\Input{A microarray gene expression data}
+		\Output{The optimal gene feature combination for phenotype classification}
+		\SetAlgorithmName{Pseudocode}
+		\text{}
+		The \textit{t}-test-based gene ranking to generate the candidate gene set $G$\;
+		The MIC-based gene ranking to narrow $G$\;
+		Set $GC$, the list of optimal gene combinations in MGRFE, to empty\;
+		\While{the maximal iterative layer number not reached}
+		{
+			Initialize and run a layer of GaRFE (Pseudocode 2) based on $G$\;
+			\For{each GaRFE}
+			{
+				Add the returned optimal gene combinations to $GC$\;
+			}
+			Sort the optimal gene combinations in $GC$ and only preserve the top ranked ones\;
+			Use the genes in the top ranked gene combinations in $GC$ to form a reduced $G$;
+		}
+		Multiple k-fold CV on the gene combinations in $GC$\;
+		Return the final selected gene combination\;
+		\caption{MGRFE: multilayer iterative feature selection using GaRFE}\label{Algo:MGRFE}
+	\end{algorithm}
+	
+	\begin{algorithm}
+		\SetKwInOut{Input}{Input}
+		\SetKwInOut{Output}{Output}
+		\SetKwRepeat{Do}{do}{while}
+		\SetAlgorithmName{Pseudocode}
+		\text{}
+		\Input{Candidate gene set $G$, Maximal chromosome length $L$}
+		\Output{The optimal gene feature combinations in GaRFE}
+		Randomly generate the first GA population $P$ from $G$ with chromosome length equal to $L$\;
+		Set $GC$, the list of optimal gene combinations in GaRFE, to empty\;
+		\Do{the current chromosome length $\geqslant$ 1}
+		{
+			Execute embedded GA (Pseudocode 3) using the population $P$\; 
+			Add the returned gene combinations by GA to $GC$\;
+			\If{the current chromosome length $>$ 1}
+			{Chromosome length drop: each individual in $P$ randomly discard several genes with the number equal to the RFE step\;}
+		}
+		Sort the optimal gene combinations in $GC$ and only preserve the top ranked ones\;
+		Return the optimal gene combinations in $GC$\;
+		\caption{GaRFE: recursive feature elimination with embedded GA}\label{Algo:GaRFE}
+	\end{algorithm}
+	
+	\begin{algorithm}
+		\SetKwInOut{Input}{Input}
+		\SetKwInOut{Output}{Output}
+		\SetAlgorithmName{Pseudocode}
+		\text{}
+		\Input{GA population $P$, Maximal evolution times $T$}
+		\Output{Updated $P$, The optimal gene feature combinations in GA}
+		Set $GC$, the list of optimal gene combinations in GA, to empty\;
+		\While{the maximal evolution times $T$ not reached}
+		{
+			Perform mutation operator\;
+			Perform crossover operator\;
+			Fitness calculation of each GA individual by k-fold CV\;
+			Truncation selection to form the updated $P$\;
+		}
+		Sort the GA individuals in $P$ and select the top ones to form $GC$\;
+		Return the updated population $P$ and the optimal gene combinations in $GC$\;
+		\caption{Embedded GA}\label{Algo:GA}
+	\end{algorithm}
+	
+	
+	\section*{S3. Implementation notes and Computation time}
+	\addcontentsline{toc}{section}{S3. Implementation notes and Computation time}
+
+	We implemented the proposed MGRFE in Python version 3.6.0 environment (\url{https://www.python.org/}) on a common laptop computer with Intel(R) Core(TM) i5-4210U CPU and 8G memory. The Python SciPy package version 0.19.0 \cite{RN441} was involved in the \textit{t}-test process, and minepy package version 1.2.0 \cite{RN440} was used to perform the MIC calculation. Some parameter settings about MGRFE: 1) the evolution iteration number of embedded GA was dynamically set to 1 to 3 (smaller iteration number used for larger chromosome length to save time); 2) the reduced feature number between two GA runs, the RFE step, was dynamically set to 1 to 3 (larger reduction step used for larger chromosome length to save time); and 3) the iterative layer number of MGRFE being 3 with three, two and one GaRFE processes at each layer is usually enough. In the experiments, we limited the size of the final selected gene combination in each dataset to below 10 genes. According to the experiment records, in each of the 19 microarray datasets, the running time of MGRFE is commonly between 500 seconds (8.33 minutes) and 900 seconds (15 minutes). Additionally, it is well worthy to mention that the final chosen gene subset in each dataset might be already found by the first GaRFE process in the first layer of MGRFE, which just costs 2\(\scriptsize{\sim}\)3 minutes. More implementation details and experiment results of MGRFE in the 19 datasets are available at \url{https://github.com/Pengeace/MGRFE-GaRFE}.
+	
+	Because Kar \emph{et~al.} also employed an evolutionary-computation method PSO, which is similar to GA, to select minimal informative genes in microarray and provided their program running time records on three datasets SRBCT, ALL\_AML, and MLL \cite{W15}, here, we offer a simple running time comparison between their method and MGRFE. Their PSO-based method cost 2.7956, 2.7906 and 7.1488 hours on SRBCT, ALL\_AML and MLL respectively to find their optimal gene subsets. In contrast, MGRFE merely used 10.8230, 9.0108 and 8.8739 minutes respectively in the same three datasets and thus showed much higher converge speed. Moreover, according to Tables 4, 5 and 6 in the main manuscript, the gene subsets selected by MGRFE had smaller sizes but higher classification accuracies compared with Kar \emph{et~al.}'s method. We noted that Kar \emph{et~al.} didn't employ the filter techniques to cut down the feature search space and their binary-coded PSO demanded high time cost to converge when dealing with the thousands of genes in each microarray.
+
+
+	\section*{S4. Performance of MGRFE in 10-time 10-fold CV}
+	\addcontentsline{toc}{section}{S4. Performance of MGRFE in 10-time 10-fold CV}
+
+	In the main manuscript, the performance of MGRFE on the two large Datasets in 10-time 10-fold cross validation (CV) are shown in the box-plot form. Here, we supplement the detailed mean accuracies ($Mean~Acc$s) and standard deviations ($S.D.$s) of MGRFE on all the 19 datasets. In each dataset, 10-fold CV is repeated 10 times based on different random seeds. In each 10-fold CV, the mean accuracy value in 10-fold is calculated and recorded. Then after 10 repetitions of the 10-fold CV, the $Mean~Acc$ and $S.D.$ of MGRFE in a dataset is calculated from the recorded total 10 mean accuracy values.
+	
+	\begin{table*}[htbp]
+		\centering
+		\caption{$Mean~Acc$ and $S.D.$ of MGRFE on 19 benchmark datasets in 10-time 10-fold CV}
+		\resizebox{0.95\textwidth}{!}{
+		\begin{threeparttable}
+		\label{Tab:Acc-SD}
+		\begin{tabular}{l|llllllllll}
+			\toprule
+			Dataset & DLBCL & Pros & Colon & Leuk & Mye & ALL1 & ALL2 & ALL3 & ALL4 & CNS\\
+			\cline{2-11}
+			$Mean~Acc$ & 0.987 & 0.979 & 0.971 & 0.982 & 0.933 & 0.998 & 0.880 & 0.920 & 0.963 & 0.980\\
+			$S.D.$ & 0.007 & 0.003 & 0.012 & 0.007 & 0.011 & 0.004 & 0.013 & 0.007 & 0.010 & 0.007\\
+			\midrule
+			Dataset & Lym & Adeno & Gas & Gas1 & Gas2 & T1D & Stroke & SRBCT & MLL & \\
+			\cline{2-10}
+			$Mean~Acc$ & 1.000 & 1.000 & 1.000 & 0.974 & 1.000 & 0.897 & 1.000 & 1.000 & 0.997\\
+			$S.D.$ & 0.000 & 0.000 & 0.000 & 0.004 & 0.000 & 0.014 & 0.000 & 0.000 & 0.006\\
+			\bottomrule
+		\end{tabular}
+		\begin{tablenotes}
+			\item Note that the $Mean~Acc$ and $S.D.$ of MGRFE in dataset ALL\_AML are same as the records in Leuk for these two are the same dataset in actual.
+		\end{tablenotes}
+		\end{threeparttable}}
+	\end{table*}
+
+
+	\begin{table*}[htbp] \scriptsize
+		\centering
+	       \caption{The gene probes finally selected by MGRFE on the 19 microarray datasets}
+	    \label{Tab:probes}
+	    \resizebox{0.95\textwidth}{!}{       
+	  \begin{tabular}{lcl}
+	        \toprule
+	        Dataset  & Probe number & Gene probes\\
+	        \midrule
+			DLBCL & 3 & [\textit{X69433\_at}, \textit{Z84497\_s\_at}, \textit{M15205\_at}]\\
+			Pros & 4 & [\textit{37639\_at}, \textit{38634\_at}, \textit{1909\_at}, \textit{37537\_at}]\\
+			Colon & 6 & [\textit{Hsa.36952}, \textit{Hsa.36696}, \textit{Hsa.94}, \textit{Hsa.442}, \textit{Hsa.5226}, \textit{Hsa.5756}]\\
+			Leuk & 2 & [\textit{M23197\_at}, \textit{M31523\_at}]\\
+			Mye & 7 & [\textit{35977\_at}, \textit{33130\_at}, \textit{31366\_at}, \textit{34571\_at}, \textit{38013\_at}, \textit{1368\_at}, \textit{41150\_r\_at}]\\
+			ALL1 & 1 & [\textit{38319\_at}]\\
+			ALL2 & 8 & [\textit{37502\_at}, \textit{39885\_at}, \textit{1291\_s\_at}, \textit{39408\_at}, \textit{1838\_g\_at}, \textit{819\_at}, \textit{31331\_at}, \textit{39336\_at}]\\
+			ALL3 & 8 & [\textit{38907\_at}, \textit{38478\_at}, \textit{34284\_at}, \textit{37693\_at}, \textit{201\_s\_at}, \textit{34497\_at}, \textit{37809\_at}, \textit{41259\_at}]\\
+			ALL4 & 6 & [\textit{39631\_at}, \textit{38119\_at}, \textit{36795\_at}, \textit{36873\_at}, \textit{39905\_i\_at}, \textit{1265\_g\_at}]\\
+			CNS & 7 & [\textit{S76475\_at}, \textit{M96739\_at}, \textit{X64624\_s\_at}, \textit{X93511\_s\_at}, \textit{K01911\_at}, \textit{S78693\_f\_at}, \textit{X78565\_at}]\\
+			Lym & 3 & [\textit{GENE3332X}, \textit{GENE3261X}, \textit{GENE1191X}]\\
+			Adeno & 1 & [\textit{D43636}]\\
+			Gas & 3 & [\textit{225571\_at}, \textit{236118\_at}, \textit{237466\_s\_at}]\\
+			Gas1 & 3 & [\textit{213125\_at}, \textit{41037\_at}, \textit{208897\_s\_at}]\\
+			Gas2 & 2 & [\textit{212344\_at}, \textit{210766\_s\_at}]\\
+			T1D & 7 & [\textit{1566232\_at}, \textit{215728\_s\_at}, \textit{215612\_at}, \textit{226585\_at}, \textit{239474\_at}, \textit{219870\_at}, \textit{244223\_at}]\\
+			Stroke & 4 & [\textit{1567009\_at}, \textit{240084\_at}, \textit{239389\_at}, \textit{233835\_at}]\\
+			SRBCT & 5 & [\textit{245330.0}, \textit{784257.0}, \textit{43733.0}, \textit{784224.0}, \textit{295985.0}]\\
+			MLL & 3 & [\textit{38242\_at}, \textit{37710\_at}, \textit{1389\_at}]\\
+	        \bottomrule
+	    \end{tabular}}
+	\end{table*}
+
+
+	\section*{S5. The gene probes selected by MGRFE}
+	\addcontentsline{toc}{section}{S5. The gene probes selected by MGRFE}
+
+	The gene probes finally selected by MGRFE on all the 19 datasets are listed in Table \ref{Tab:probes}. These differentially expressed genes could be potential biomarker candidates that are useful to related phenotype researches.
+	
+
+	\bibliographystyle{IEEEtran}
+	\bibliography{supplementary}
+
+\end{document}
+
+
