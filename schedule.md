@@ -1,10 +1,10 @@
 
-#Questions
+# Questions
 
 ---
 **Five star:**
 
-##Reviewer1:
+## Reviewer1:
 
 4.
 > What is the rationale for using particularly t-test first and then MIC? Can any combination of other two filter methods be used in search space reduction task? Clarify in detail. Use any other combination of two filter methods and compare it to the proposed combination of t-test and MIC-based search space reduction.
@@ -18,7 +18,7 @@
 8(description). 
 > The proposed work has also been compared with Kar et al. [28] in computational performance. Kar et al. have applied a swarm intelligence-based method to the space of all genes. They have not reduced the search space prior to the optimization task. In contrast, the proposed method have applied MGRFE technique on the reduced search space. The reduce search space have been constructed by t-test and then by MIC technique. In my opinion the search space reduction is fixed. It is done once before the application of MGRFE. In that regard, the comparison of computational time would not significant because it has been computed in the reduced search space. The genes outside the reduced search space could carry valuable information towards classification accuracy.
 
-##Reviewer2:
+## Reviewer2:
 
 3. 
 > The paper is a mixture of techniques that are by now standard in the world of computational biology.  Given a very large number of features, first use some pre-filtering to eliminate perhaps 90% to 95% of the features, and then use recursive feature elimination (RFE) on the remaining features.  I could not find any compelling evidence that the proposed approach is superior to the existing methods.
@@ -36,7 +36,7 @@
 
 **Three star:**
 
-##Reviewer1
+## Reviewer1
 
 
 1.	
@@ -57,7 +57,7 @@
 10.
 > In the Conclusion section, the authors need to fully discuss insightful and practical implications. 
 
-##Reviewer2
+## Reviewer2
 
 1. 
 > There are several places where the authors do not appear to be aware of simple statistical facts.  For instance, the accuracy is a weighted average of the sensitivity and the specificity.  But the authors talk as though they are independent parameters.  Equation (1) in the right column of page 1 is too wide.
