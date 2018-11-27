@@ -21,7 +21,7 @@
 ## Reviewer2:
 
 3. 
-> The paper is a mixture of techniques that are by now standard in the world of computational biology.  Given a very large number of features, first use some pre-filtering to eliminate perhaps 90% to 95% of the features, and then use recursive feature elimination (RFE) on the remaining features.  I could not find any compelling evidence that the proposed approach is superior to the existing methods.
+> The authors claim to compare their method on 17 data sets.  But I did not see any evidence that the finally determined feature set is validated on an independent data set of the same form of cancer for example.  All that the authors have done is five-fold cross-validation within the same data set.  Without this sort of validation on an independent data set, the claimed performance figures by themselves are not very persuasive.  This is because cross-validation within the same data set does not take into account factors such as batch effect, platform variation, and the like.
 
 6.
 > In Section 2.3.1 the authors use the T-test and MIC to achieve a first-cut reduction in the feature set.  I have found that using the so-called "volcano plot," which combines the T-test with a fold-change criterion, works better than just the T-test alone.
