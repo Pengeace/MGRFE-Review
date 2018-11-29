@@ -150,7 +150,9 @@
 	
 	\subsection{Results on Dataset One}
 	 
-	The results of MGRFE on Dataset One including 17 binary datasets are given in Table \ref{Tab:RST all index}, where six measurements calculated by 5-fold CV and the \textit{t}-test-based gene rankings are listed. For 17 datasets, \(Acc\) values are all above 0.9 within 10 genes. Moreover, for 8 of 17 datasets (DLBCL, Leuk, ALL1, Lym, Adeno, Gas, Gas2, and Stroke), \(Acc\) reached 1.0 with gene number less than 5. MGRFE also show the strong robustness in dealing with imbalanced datasets like DLBCL, Colon, Leuk, ALL1, ALL4, and CNS, for which \(Sn\), \(Sp\), \(Avc\), \(MCC\), and \(AUC\) are all above 0.95 without being influenced by the data imbalance. For the \textit{t}-test-based gene ranking, which begins with 0, the best gene feature subset is not always the top-ranked features in the \textit{t}-test and a filter algorithm alone cannot generate the optimal feature combination. Meanwhile, for 5 of 17 datasets, the top gene according to the \textit{t}-test appeared in the final selected gene combinations, and many top-ranked genes are also involved. Therefore, the filter techniques are qualified for the search space reduction stage. Moreover, MGRFE achieves stable classification performance in 10 repetitions of 10-fold CV as depicted in Fig. \ref{Fig:CV1}.
+	The results of MGRFE on Dataset One including 17 binary datasets are given in Table \ref{Tab:RST all index}, where six measurements calculated by 5-fold CV and the \textit{t}-test and MIC-based gene rankings are listed. For 17 datasets, \(Acc\) values are all above 0.9 within 10 genes. Moreover, for 8 of 17 datasets (DLBCL, Leuk, ALL1, Lym, Adeno, Gas, Gas2, and Stroke), \(Acc\) reached 1.0 with gene number less than 5. MGRFE also show the strong robustness in dealing with imbalanced datasets like DLBCL, Colon, Leuk, ALL1, ALL4, and CNS, for which \(Sn\), \(Sp\), \(Avc\), \(MCC\), and \(AUC\) are all above 0.95 without being influenced by the data imbalance. 
+	According to the \textit{t}-test and MIC-based gene ranking, the best gene feature subset is not always the highest-ranked features in the filter method, thus the filter algorithm alone cannot generate the optimal feature combination.
+	It could be noted that the relative positions of selected genes in the two ranking methods are consistent on most datasets. The top-ranked genes in the \textit{t}-test are also top-ranked in the MIC sorting (e.g. the selected gene on ALL1 is the top one in both \textit{t}-test and MIC ranking). For 5 of 17 datasets, the top one gene  according to the \textit{t}-test appeared in the final selected gene subsets. Generally, the selected informative genes are top-ranked by the \textit{t}-test and MIC methods. Therefore, the filter techniques are qualified for the search space reduction stage. Moreover, MGRFE achieves stable classification performance in 10 repetitions of 10-fold CV as depicted in Fig. \ref{Fig:CV1}.
 	
 	\begin{table*}[!htbp] \footnotesize
 		\centering
@@ -159,25 +161,25 @@
 		\resizebox{1\textwidth}{!}{
 			\begin{tabular}{l|lllllllll}
 				\toprule
-				Datasets & Pos/Neg & Genes & $Sn$ & $Sp$ & $Acc$ & $Avc$ & $MCC$ & $AUC$ & \textit{t}-test-based gene rankings\\
+				Datasets & Pos/Neg & Genes & $Sn$ & $Sp$ & $Acc$ & $Avc$ & $MCC$ & $AUC$ & \textit{t}-test/MIC-based gene rankings\\
 				\midrule
-				DLBCL & 58/19 & \textbf{3} & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [12, 38, 53]\\
-				Pros & 52/50 & \textbf{4} & 0.980 & 0.982 & \textbf{0.981} & 0.981 & 0.963 & 0.98 & [0, 14, 73, 693]\\
-				Colon & 40/22 & \textbf{6} & 1.0 & 0.960 & \textbf{0.985} & 0.980 & 0.969 & 0.97 & [14, 57, 175, 224, 239, 494]\\
-				Leuk & 47/25 & \textbf{2} & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [3, 6]\\
-				Mye & 137/36 & \textbf{7} & 0.963 & 0.839 & \textbf{0.937} & 0.901 & 0.816 & 0.95 & [2, 14, 82, 142, 377, 403, 568]\\
-				ALL1 & 95/33 & \textbf{1} & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [0]\\
-				ALL2 & 65/35 & \textbf{8} & 0.914 & 0.908 & \textbf{0.910} & 0.911 & 0.829 & 0.94 & [0, 51, 77, 79, 521, 686, 736, 759]\\
-				ALL3 & 24/101 & \textbf{8} & 0.830 & 0.950 & \textbf{0.927} & 0.890 & 0.785 & 0.93 & [3, 51, 74, 141, 487, 509, 714, 769]\\
-				ALL4 & 26/67 & \textbf{6} & 1.0 & 0.986 & \textbf{0.990} & 0.993 & 0.978 & 0.99 & [0, 5, 38, 281, 534, 753]\\
-				CNS & 39/21 & \textbf{7} & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 0.98 & [8, 52, 129, 130, 271, 272, 519]\\
-				Lym & 22/23 & \textbf{3} & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [3, 4, 668]\\
-				Adeno & 18/18 & \textbf{1} & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [467]\\
-				Gas & 29/36 & \textbf{3} & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [21, 76, 305]\\
-				Gas1 & 72/72 & \textbf{3} & 0.986 & 0.973 & \textbf{0.980} & 0.980 & 0.961 & 0.99 & [131, 247, 716]\\
-				Gas2 & 62/62 & \textbf{2} & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [37, 88]\\
-				T1D & 57/44 & \textbf{7} & 0.911 & 0.912 & \textbf{0.911} & 0.912 & 0.826 & 0.94 & [13, 24, 112, 558, 577, 679, 977]\\
-				Stroke & 20/20 & \textbf{4} & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [0, 22, 128, 275]\\
+				DLBCL & 58/19 & \textbf{3} & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [13/8, 39/24, 54/52]\\
+				Pros & 52/50 & \textbf{4} & 0.980 & 0.982 & \textbf{0.981} & 0.981 & 0.963 & 0.98 & [1/1, 15/47, 74/49, 694/618]\\
+				Colon & 40/22 & \textbf{6} & 1.0 & 0.960 & \textbf{0.985} & 0.980 & 0.969 & 0.97 & [15/6, 58/21, 176/297, 225/80, 240/555, 495/482]\\
+				Leuk & 47/25 & \textbf{2} & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [4/3, 7/5]\\
+				Mye & 137/36 & \textbf{7} & 0.963 & 0.839 & \textbf{0.937} & 0.901 & 0.816 & 0.95 & [3/3, 15/103, 83/142, 143/13, 378/217, 404/644, 569/707]\\
+				ALL1 & 95/33 & \textbf{1} & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [1/1]\\
+				ALL2 & 65/35 & \textbf{8} & 0.914 & 0.908 & \textbf{0.910} & 0.911 & 0.829 & 0.94 & [1/80, 52/395, 78/3040, 80/1297, 522/2448, 687/2038, 737/920, 760/1449]\\
+				ALL3 & 24/101 & \textbf{8} & 0.830 & 0.950 & \textbf{0.927} & 0.890 & 0.785 & 0.93 & [4/500, 52/3437, 75/3010, 142/393, 488/443, 510/795, 715/1551, 770/1321]\\
+				ALL4 & 26/67 & \textbf{6} & 1.0 & 0.986 & \textbf{0.990} & 0.993 & 0.978 & 0.99 & [1/2, 6/45, 39/356, 282/226, 535/497, 754/1377]\\
+				CNS & 39/21 & \textbf{7} & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 0.98 & [9/907, 53/542, 130/620, 131/519, 272/57, 273/454, 520/49]\\
+				Lym & 22/23 & \textbf{3} & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [4/7, 5/4, 669/135]\\
+				Adeno & 18/18 & \textbf{1} & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [468/27]\\
+				Gas & 29/36 & \textbf{3} & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [22/1, 77/32, 306/36]\\
+				Gas1 & 72/72 & \textbf{3} & 0.986 & 0.973 & \textbf{0.980} & 0.980 & 0.961 & 0.99 & [132/74, 248/167, 717/500]\\
+				Gas2 & 62/62 & \textbf{2} & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [38/6, 89/62]\\
+				T1D & 57/44 & \textbf{7} & 0.911 & 0.912 & \textbf{0.911} & 0.912 & 0.826 & 0.94 & [14/2229, 25/1579, 113/1287, 559/1282, 578/353, 680/426, 978/1728]\\
+				Stroke & 20/20 & \textbf{4} & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [1/3, 23/115, 129/543, 276/539]\\
 				\bottomrule
 		\end{tabular}}
 	\end{table*}
