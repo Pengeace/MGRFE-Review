@@ -1,0 +1,19 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Materials and Methods}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Materials}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Classification performance measurements}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Method}{section.2}% 5
+\BOOKMARK [3][-]{subsubsection.2.3.1}{Stage 1: Search space reduction}{subsection.2.3}% 6
+\BOOKMARK [3][-]{subsubsection.2.3.2}{Stage 2: Precise wrapper search}{subsection.2.3}% 7
+\BOOKMARK [3][-]{subsubsection.2.3.3}{Stage 3: Multiple k-fold CV to select the final gene combination}{subsection.2.3}% 8
+\BOOKMARK [1][-]{section.3}{Results}{}% 9
+\BOOKMARK [2][-]{subsection.3.1}{Results on Dataset One}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.2}{Comparison with other methods on Dataset One}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.3}{Results on Dataset Two}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.4}{Comparison with other methods on Dataset Two}{section.3}% 13
+\BOOKMARK [2][-]{subsection.3.5}{Biological inferences of the genes selected by MGRFE}{section.3}% 14
+\BOOKMARK [1][-]{section.4}{Discussion}{}% 15
+\BOOKMARK [1][-]{section*.2}{References}{}% 16
+\BOOKMARK [1][-]{IEEEbiography.0}{Biographies}{}% 17
+\BOOKMARK [2][-]{IEEEbiography.1}{Cheng Peng}{IEEEbiography.0}% 18
+\BOOKMARK [2][-]{IEEEbiography.2}{Ying Li}{IEEEbiography.0}% 19

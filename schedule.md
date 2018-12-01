@@ -1,10 +1,10 @@
 
-# Questions
+## Questions
 
 ---
 **Five star:**
 
-## Reviewer1:
+### Reviewer1:
 
 4.
 > What is the rationale for using particularly t-test first and then MIC? Can any combination of other two filter methods be used in search space reduction task? Clarify in detail. Use any other combination of two filter methods and compare it to the proposed combination of t-test and MIC-based search space reduction.
@@ -18,7 +18,7 @@
 8(description). 
 > The proposed work has also been compared with Kar et al. [28] in computational performance. Kar et al. have applied a swarm intelligence-based method to the space of all genes. They have not reduced the search space prior to the optimization task. In contrast, the proposed method have applied MGRFE technique on the reduced search space. The reduce search space have been constructed by t-test and then by MIC technique. In my opinion the search space reduction is fixed. It is done once before the application of MGRFE. In that regard, the comparison of computational time would not significant because it has been computed in the reduced search space. The genes outside the reduced search space could carry valuable information towards classification accuracy.
 
-## Reviewer2:
+### Reviewer2:
 
 3. 
 > The authors claim to compare their method on 17 data sets.  But I did not see any evidence that the finally determined feature set is validated on an independent data set of the same form of cancer for example.  All that the authors have done is five-fold cross-validation within the same data set.  Without this sort of validation on an independent data set, the claimed performance figures by themselves are not very persuasive.  This is because cross-validation within the same data set does not take into account factors such as batch effect, platform variation, and the like.
@@ -36,7 +36,7 @@
 
 **Three star:**
 
-## Reviewer1
+### Reviewer1
 
 1.	
 > In the introduction section author has mentioned the phrase "lack an explicit decline of the feature number". The particular phrase is not clear. Please elaborate and explain clearly the lacuna of swarm intelligence based gene selection approach.
@@ -56,7 +56,7 @@
 10.
 > In the Conclusion section, the authors need to fully discuss insightful and practical implications. 
 
-## Reviewer2
+### Reviewer2
 
 1. 
 > First of all, the paper is described as "Survey/Tutorial," but it appears to describe a claimed original contribution by the authors, namely the MGRFE algorithm.  The proposed new algorithm is compared against several existing algorithms.  Therefore, if at all the paper is to be published, it should be as a regular research paper, and not as a survey/tutorial paper.

@@ -53,7 +53,7 @@
 	
 	Filter algorithms generally evaluate features according to the inherent characteristic of a dataset, then rank all the features and preserve only an optimal subset of the original features. Up to now, lots of filter algorithms have been designed, such as the methods based on the \textit{t}-test \cite{W23}, $\chi^2$ test \cite{W21}, mutual information \cite{W22}, maximal information coefficient (MIC) \cite{W25}, and signal-to-noise ratio \cite{W24}. The \textit{t}-test is the frequently used and efficient statistical approach to detecting differentially expressed genes in microarray analysis \cite{RN413, RN414, RN421, RN417, RN418, RN419, RN416}. MIC is an information theory-based measurement for capturing a wide range of associations, which has shown excellent performance on detecting novel associations in large datasets \cite{W8}. The recent study of McTwo \cite{W16}, which is based on MIC for selection of a gene subset in a microarray data, has outperformed most of existing algorithms. In addition, MIC may offer more convenience in dealing with multiclass datasets. Hence, the \textit{t}-test and MIC are practicable and qualified approaches for selecting statistically significant discriminative genes and thus are mostly used in the feature preprocessing stage to generate a candidate gene set in the analysis of microarray. Because there is no classification algorithm involved in the filter algorithm, its computational speed is high and suitable for large datasets. On the other hand, the filter techniques for gene feature selection also have some limitations. First, filter methods are likely to add redundant features into the chosen subsets, which will lead to inaccessibility of optimal results. Second, genes in the cell interact with other genes to perform a certain biological function, but the filter methods select genes individually rather than gene combinations \cite{P34}. Third, the features top-ranked by a filter algorithm are not always the best features for classification \cite{W16}.
 	
-	Wrapper algorithms usually employ classification models and contain heuristic rules to select feature subsets guided by the classification performance on the feature subsets being used, which are usually superior to filter algorithms but more time-consuming. A variety of wrapper algorithms have emerged involving simulated annealing, randomized hill climbing \cite{W26}, regularized random forest (RRF) \cite{W11}, particle swarm optimization (PSO) \cite{W12,W10}, and genetic algorithm (GA) \cite{W13}. With the rapid development of heuristic rules and evolutionary strategies commonly present in wrapper techniques, various swarm intelligence algorithms have been applied to the optimization of feature selection. Kar \emph{et~al.} have proposed a particle swarm optimization method based on adaptive K-nearest neighborhood (KNN) to identify a minimum meaningful gene subset \cite{W15}. Moosa \emph{et~al.} have presented a modified artificial bee colony algorithm (ABC) to select a minimum number of genes with high predictive accuracy for cancer classification \cite{P32}. Oreski \emph{et~al.} have designed a hybrid GA with neural networks to identify an optimal feature subset with high classification accuracy and scalability for credit risk assessment \cite{W17}. Jung and Zscheischler have described a guided hybrid GA to minimize the number of cost function evaluations \cite{W18}. Nevertheless, all these feature selection methods based on swarm intelligence algorithms use the binary encoding method and lack an explicit reduction in the feature number. Meanwhile, it has been verified that only a minimal number of informative genes is enough for effective diagnosis of different phenotypes in microarray gene datasets \cite{P1,W16,P32,P33}. The feature selection using binary encoding has three main shortcomings in finding an optimal gene combination: (1) The fixed chromosome length for the encoding length must be equal to the gene range to represent all the genes. This arrangement can result in impossibility of the explicit reduction in the gene number and unnecessary space occupation when there are only several 1s among lots of 0s. (2) There are different numbers of actual existing genes in different individuals. Because there are different numbers of 1s, the actual number of genes varies among individuals and cannot be controlled precisely. (3) The convergence speed is usually low and the time cost is high to generate the minimal informative gene combination. 
+	Wrapper algorithms usually employ classification models and contain heuristic rules to select feature subsets guided by the classification performance on the feature subsets being used, which are usually superior to filter algorithms but more time-consuming. A variety of wrapper algorithms have emerged involving simulated annealing, randomized hill climbing \cite{W26}, regularized random forest (RRF) \cite{W11}, particle swarm optimization (PSO) \cite{W12,W10}, and genetic algorithm (GA) \cite{W13}. With the rapid development of heuristic rules and evolutionary strategies commonly present in wrapper techniques, various swarm intelligence algorithms have been applied to the optimization of feature selection. Kar \emph{et~al.} have proposed a particle swarm optimization method based on adaptive K-nearest neighborhood (KNN) to identify a minimum meaningful gene subset \cite{W15}. Moosa \emph{et~al.} have presented a modified artificial bee colony algorithm (ABC) to select a minimum number of genes with high predictive accuracy for cancer classification \cite{P32}. Oreski \emph{et~al.} have designed a hybrid GA with neural networks to identify an optimal feature subset with high classification accuracy and scalability for credit risk assessment \cite{W17}. Jung and Zscheischler have described a guided hybrid GA to minimize the number of cost function evaluations \cite{W18}. Nevertheless, all these feature selection methods based on swarm intelligence algorithms use the binary encoding method and lack an explicit reduction in the feature number. The feature number only changes in the randomized evolution operation like mutation and crossover. Thus, these methods lack the precise control over the gene features in the individuals and can not explicitly remove genes to decrease the feature number. Meanwhile, it has been verified that only a minimal number of informative genes is enough for effective diagnosis of different phenotypes in microarray gene datasets \cite{P1,W16,P32,P33}. The feature selection using binary encoding has three main shortcomings in finding an optimal gene combination: (1) The fixed chromosome length for the encoding length must be equal to the gene range to represent all the genes. This arrangement can result in impossibility of the explicit reduction in the gene number and unnecessary space occupation when there are only several 1s among lots of 0s. (2) There are different numbers of actual existing genes in different individuals. Because there are different numbers of 1s, the actual number of genes varies among individuals and cannot be controlled precisely. (3) The convergence speed is usually low and the time cost is high to generate the minimal informative gene combination. 
 	The sizes of the optimal gene combinations in most of datasets are below 10. The evolution-based feature selection algorithms using binary encoding lack of an explicit feature reduction mechanism, which results in low probability and high time cost to generate the optimal minimal gene combination among the several thousand to tens of thousands of genes in each dataset.
 	Recursive feature elimination (RFE) is a popular strategy that yields an explicit recursive feature reduction by removing features with the least weights \cite{W7,P1,P2,P27}.
 	
@@ -65,7 +65,7 @@
 	
 	\begin{figure*}[!htbp]
 		\centering
-		\includegraphics[width=0.68\textwidth]{pictures/MGRFE-whole.pdf}
+		\includegraphics[width=0.6\textwidth]{pictures/MGRFE-whole.pdf}
 		\caption{A flowchart of the whole MGRFE procedure in this study.}
 		\label{Fig:MGRFE_whole}
 	\end{figure*}
@@ -77,13 +77,12 @@
 	Dataset One consists of the 17 binary classification datasets used in ref. \cite{W16}, which includes diffuse large B-cell lymphoma (DLBCL) \cite{Y22}, Prostate (Pros) \cite{Y23}, acute lymphoblastic leukemia (ALL; subdivided into four subtypes based on different phenotypes) \cite{Y24}, central nervous system embryonal tumor (CNS) \cite{Y25}, Lymphoma (Lym) \cite{Y26}, Adenoma (Adeno) \cite{Y27}, Colon \cite{Y20}, Leukaemia (Leuk) \cite{Y21}, Myeloma (Mye)\cite{Y28}, Gastric (Gas) \cite{Y29}, and Gastric1/Gastric2 (Gas1/Gas2) cancer \cite{Y30} as well as type 1 diabetes (T1D) \cite{Y31}, and Stroke \cite{Y32}. Among them, DLBCL, Colon, Leukaemia, Myeloma, ALL1-4, and CNS datasets are imbalanced.
 	Dataset Two is composed of the three typical benchmark microarray datasets used in ref. \cite{W15}, including two multiclass datasets of small-round blue-cell tumor (SRBCT) \cite{P13} and mixed lineage leukemia (MLL) \cite{W3} and one binary dataset of acute lymphoblastic leukemia and acute myeloid (ALL\_AML). Many previous experiments are conducted on these three datasets \cite{P8,P9,P10,P11,P12,P13,P14,P15,P16,P17,P18,P19,P20,P21,P22,P23}. The performance comparison between these methods and MGRFE will be provided in the Results section. It should be mentioned that the widely used benchmark Leukaemia was tested in both refs. \cite{W16} and \cite{W15} named as Leuk and ALL\_AML respectively, but they are same actually.
 	The information on the 19 datasets in the two large datasets is given in Tables 1 and 2 in Supplementary Material. All these datasets can be downloaded directly from \url{https://github.com/Pengeace/MGRFE-GaRFE}.
-
 	
 	\subsection{Classification performance measurements}
 	
 	On the 17 binary classification datasets, we performed six widely used measurements to compare the performance: Accuracy ($Acc$), Sensitivity ($Sn$), Specificity ($Sp$), Average accuracy ($Avc$), Matthews Correlation Coefficient($MCC$), and $AUC$. $AUC$ is the area under the receiver operating characteristic (ROC) curve, and the formulas of the other five measurements are presented in Equation (\ref{eq:1}). In Equation (\ref{eq:1}), $P$ and $N$ represent the numbers of positive and negative samples; $TP$ and $TN$ mean the number of correctly predicted positive and negative samples; and $FP$ and $FN$ denote the wrongly predicted positive and negative samples, respectively. For the two multiclass datasets, for consistency and convenience, only \(Acc\) is used.
 	
-	{\footnotesize
+	{\scriptsize
 		\begin{equation}\label{eq:1}
 		\begin{split}
 		Sn = & \frac{TP}{TP+FN} ,\quad Sp = \frac{TN}{TN+FP}, \\
@@ -99,15 +98,17 @@
 	
 	\begin{figure*}[t]
 		\centering
-		\includegraphics[width=0.9\textwidth]{pictures/MGRFE-flowchart.pdf}
+		\includegraphics[width=0.87\textwidth]{pictures/MGRFE-flowchart.pdf}
 		\caption{The flowchart of MGRFE, which is divided into 3 stages: search space reduction, precise wrapper search, and multiple k-fold CV. Stage 2 is the core of MGRFE, which includes two key processes: GaRFE and embedded modified GA.}
 		\label{Fig:MGRFE_flowchart}
 	\end{figure*}
 	
 	\subsubsection{Stage 1: Search space reduction}
 	
-	At Stage 1, two filter methods, the \textit{t}-test and MIC, are used to decrease the gene range and offer a candidate gene set for later precise wrapper search stage. First, we perform the \textit{t}-test on all genes and subject them to ascending sorting according to their $p$ values, then the top-ranked significant features with $p$ values less than 0.05 are preserved. Next, the upper limit of the features kept after the \textit{t}-test is set to 1000, that is, when there are more than 1000 features having $p$ values less than 0.05, only the top 1000 with lower $p$ values would be kept. If the preserved features after the \textit{t}-test screening are fewer than 500, they are all kept directly and definitively to form the candidate gene set without MIC screening; otherwise, the MIC-based selection will be followed. Second, we carry out MIC calculation on the preserved genes and resort them according to their MIC values, then the candidate gene set is generated from the top 500 genes with higher MIC values. For the two multiclass datasets, a candidate gene set is generated based only on the descending order of MIC values of all genes for which the multivariate \textit{t}-test cannot be performed directly.
-	
+	At Stage 1, two filter methods, the \textit{t}-test and MIC, are used to decrease the gene range and offer a candidate gene set for later precise wrapper search stage. First, we perform the \textit{t}-test on all genes and subject them to ascending sorting according to their $p$ values, then the top-ranked statistically significant features with $p$ values less than 0.05 are preserved. Next, the upper limit of the features kept after the \textit{t}-test is set to 1000, that is, when there are more than 1000 features having $p$ values less than 0.05, only the top 1000 with lower $p$ values would be kept. If the preserved features after the \textit{t}-test screening are fewer than 500, they are all kept directly and definitively to form the candidate gene set without MIC screening; otherwise, the MIC-based selection will be followed. Second, we carry out MIC calculation on the preserved genes and resort them according to their MIC values, then the candidate gene set is generated from the top 500 genes with higher MIC values. For the two multiclass datasets, a candidate gene set is generated based only on the descending order of MIC values of all genes for which the multivariate \textit{t}-test cannot be performed directly. 
+	In the Table 5 in Supplementary Material, the number of statistically significant genes with \emph{t}-test-based \emph{p}-values less than 0.05 on each binary-class dataset are listed.
+	In the "S8" section of Supplementary Material, we also give a simple comparison of \textit{t}-test+MIC with other filter combinations.
+
 	\subsubsection{Stage 2: Precise wrapper search}
 	
 	At Stage 2, we search the candidate gene set obtained from Stage 1 and compute the optimal gene combinations for further selection at Stage 3. MGRFE is a multilayer iterative feature selection method and its selection unit in each layer is a GaRFE process. GaRFE, the inverted triangle in MGRFE as shown in Fig. \ref{Fig:MGRFE_whole}, is the recursive feature elimination process with every stair being embedded GA. Embedded GA is the integer-coded genetic algorithm with a dynamic-length chromosome. The key feature of MGRFE is GaRFE in each layer, in which embedded GA is responsible for generating optimal gene combinations, and the RFE process is responsible for cutting down the gene number. Therefore, our method can find gene combinations with both significantly reduced sizes and excellent classification performance.
@@ -152,34 +153,34 @@
 	 
 	The results of MGRFE on Dataset One including 17 binary datasets are given in Table \ref{Tab:RST all index}, where six measurements calculated by 5-fold CV and the \textit{t}-test and MIC-based gene rankings are listed. For 17 datasets, \(Acc\) values are all above 0.9 within 10 genes. Moreover, for 8 of 17 datasets (DLBCL, Leuk, ALL1, Lym, Adeno, Gas, Gas2, and Stroke), \(Acc\) reached 1.0 with gene number less than 5. MGRFE also show the strong robustness in dealing with imbalanced datasets like DLBCL, Colon, Leuk, ALL1, ALL4, and CNS, for which \(Sn\), \(Sp\), \(Avc\), \(MCC\), and \(AUC\) are all above 0.95 without being influenced by the data imbalance. 
 	According to the \textit{t}-test and MIC-based gene ranking, the best gene feature subset is not always the highest-ranked features in the filter method, thus the filter algorithm alone cannot generate the optimal feature combination.
-	It could be noted that the relative positions of selected genes in the two ranking methods are consistent on most datasets. The top-ranked genes in the \textit{t}-test are also top-ranked in the MIC sorting (e.g. the selected gene on ALL1 is the top one in both \textit{t}-test and MIC ranking). For 5 of 17 datasets, the top one gene  according to the \textit{t}-test appeared in the final selected gene subsets. Generally, the selected informative genes are top-ranked by the \textit{t}-test and MIC methods. Therefore, the filter techniques are qualified for the search space reduction stage. Moreover, MGRFE achieves stable classification performance in 10 repetitions of 10-fold CV as depicted in Fig. \ref{Fig:CV1}.
+	It could be noted that the relative positions of selected genes in the two ranking methods are consistent on most datasets. The top-ranked genes in the \textit{t}-test are also top-ranked in the MIC sorting (e.g. the selected gene on ALL1 is the top one in both \textit{t}-test and MIC ranking). For 5 of 17 datasets, the top one gene  according to the \textit{t}-test appeared in the final selected gene subsets. Generally, the selected informative genes are top-ranked by the \textit{t}-test and MIC methods. Therefore, the filter techniques are qualified for the search space reduction stage. Moreover, MGRFE achieves stable classification performance in 10 repetitions of 10-fold CV as depicted in Fig. \ref{Fig:CV1}. Besides, we also validated the selected gene features of Leuk, Gas1 and Gas2 on independent datasets in the "S8" section of Supplementary Material.
 	
 	\begin{table*}[!htbp] \footnotesize
 		\centering
 		\caption{Results of MGRFE on 17 datasets in Dataset One}
 		\label{Tab:RST all index}
-		\resizebox{1\textwidth}{!}{
+		\resizebox{0.95\textwidth}{!}{
 			\begin{tabular}{l|lllllllll}
 				\toprule
-				Datasets & Pos/Neg & Genes & $Sn$ & $Sp$ & $Acc$ & $Avc$ & $MCC$ & $AUC$ & \textit{t}-test/MIC-based gene rankings\\
+				Datasets & Pos/Neg & Genes/Total & $Sn$ & $Sp$ & $Acc$ & $Avc$ & $MCC$ & $AUC$ & \textit{t}-test/MIC-based gene rankings\\
 				\midrule
-				DLBCL & 58/19 & \textbf{3} & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [13/8, 39/24, 54/52]\\
-				Pros & 52/50 & \textbf{4} & 0.980 & 0.982 & \textbf{0.981} & 0.981 & 0.963 & 0.98 & [1/1, 15/47, 74/49, 694/618]\\
-				Colon & 40/22 & \textbf{6} & 1.0 & 0.960 & \textbf{0.985} & 0.980 & 0.969 & 0.97 & [15/6, 58/21, 176/297, 225/80, 240/555, 495/482]\\
-				Leuk & 47/25 & \textbf{2} & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [4/3, 7/5]\\
-				Mye & 137/36 & \textbf{7} & 0.963 & 0.839 & \textbf{0.937} & 0.901 & 0.816 & 0.95 & [3/3, 15/103, 83/142, 143/13, 378/217, 404/644, 569/707]\\
-				ALL1 & 95/33 & \textbf{1} & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [1/1]\\
-				ALL2 & 65/35 & \textbf{8} & 0.914 & 0.908 & \textbf{0.910} & 0.911 & 0.829 & 0.94 & [1/80, 52/395, 78/3040, 80/1297, 522/2448, 687/2038, 737/920, 760/1449]\\
-				ALL3 & 24/101 & \textbf{8} & 0.830 & 0.950 & \textbf{0.927} & 0.890 & 0.785 & 0.93 & [4/500, 52/3437, 75/3010, 142/393, 488/443, 510/795, 715/1551, 770/1321]\\
-				ALL4 & 26/67 & \textbf{6} & 1.0 & 0.986 & \textbf{0.990} & 0.993 & 0.978 & 0.99 & [1/2, 6/45, 39/356, 282/226, 535/497, 754/1377]\\
-				CNS & 39/21 & \textbf{7} & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 0.98 & [9/907, 53/542, 130/620, 131/519, 272/57, 273/454, 520/49]\\
-				Lym & 22/23 & \textbf{3} & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [4/7, 5/4, 669/135]\\
-				Adeno & 18/18 & \textbf{1} & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [468/27]\\
-				Gas & 29/36 & \textbf{3} & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [22/1, 77/32, 306/36]\\
-				Gas1 & 72/72 & \textbf{3} & 0.986 & 0.973 & \textbf{0.980} & 0.980 & 0.961 & 0.99 & [132/74, 248/167, 717/500]\\
-				Gas2 & 62/62 & \textbf{2} & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [38/6, 89/62]\\
-				T1D & 57/44 & \textbf{7} & 0.911 & 0.912 & \textbf{0.911} & 0.912 & 0.826 & 0.94 & [14/2229, 25/1579, 113/1287, 559/1282, 578/353, 680/426, 978/1728]\\
-				Stroke & 20/20 & \textbf{4} & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [1/3, 23/115, 129/543, 276/539]\\
+				DLBCL & 58/19 & \textbf{3}/7129 & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [13/8, 39/24, 54/52]\\
+				Pros & 52/50 & \textbf{4}/12625 & 0.980 & 0.982 & \textbf{0.981} & 0.981 & 0.963 & 0.98 & [1/1, 15/47, 74/49, 694/618]\\
+				Colon & 40/22 & \textbf{6}/2000 & 1.0 & 0.960 & \textbf{0.985} & 0.980 & 0.969 & 0.97 & [15/6, 58/21, 176/297, 225/80, 240/555, 495/482]\\
+				Leuk & 47/25 & \textbf{2}/7129 & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [4/3, 7/5]\\
+				Mye & 137/36 & \textbf{7}/12625 & 0.963 & 0.839 & \textbf{0.937} & 0.901 & 0.816 & 0.95 & [3/3, 15/103, 83/142, 143/13, 378/217, 404/644, 569/707]\\
+				ALL1 & 95/33 & \textbf{1}/12625 & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [1/1]\\
+				ALL2 & 65/35 & \textbf{8}/12625 & 0.914 & 0.908 & \textbf{0.910} & 0.911 & 0.829 & 0.94 & [1/80, 52/395, 78/3040, 80/1297, 522/2448, 687/2038, 737/920, 760/1449]\\
+				ALL3 & 24/101 & \textbf{8}/12625 & 0.830 & 0.950 & \textbf{0.927} & 0.890 & 0.785 & 0.93 & [4/500, 52/3437, 75/3010, 142/393, 488/443, 510/795, 715/1551, 770/1321]\\
+				ALL4 & 26/67 & \textbf{6}/12625 & 1.0 & 0.986 & \textbf{0.990} & 0.993 & 0.978 & 0.99 & [1/2, 6/45, 39/356, 282/226, 535/497, 754/1377]\\
+				CNS & 39/21 & \textbf{7}/7129 & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 0.98 & [9/907, 53/542, 130/620, 131/519, 272/57, 273/454, 520/49]\\
+				Lym & 22/23 & \textbf{3}/4026 & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [4/7, 5/4, 669/135]\\
+				Adeno & 18/18 & \textbf{1}/7457 & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [468/27]\\
+				Gas & 29/36 & \textbf{3}/22645 & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [22/1, 77/32, 306/36]\\
+				Gas1 & 72/72 & \textbf{3}/22283 & 0.986 & 0.973 & \textbf{0.980} & 0.980 & 0.961 & 0.99 & [132/74, 248/167, 717/500]\\
+				Gas2 & 62/62 & \textbf{2}/22283 & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [38/6, 89/62]\\
+				T1D & 57/44 & \textbf{7}/54675 & 0.911 & 0.912 & \textbf{0.911} & 0.912 & 0.826 & 0.94 & [14/2229, 25/1579, 113/1287, 559/1282, 578/353, 680/426, 978/1728]\\
+				Stroke & 20/20 & \textbf{4}/54675 & 1.0 & 1.0 & \textbf{1.0} & 1.0 & 1.0 & 1.0 & [1/3, 23/115, 129/543, 276/539]\\
 				\bottomrule
 		\end{tabular}}
 	\end{table*}
@@ -212,7 +213,7 @@
 				\midrule
 				MGRFE \(Acc\) & 1.0 & 0.981 & 0.985 & 1.0 & 0.937 & 1.0 & 0.910 & 0.927 & 0.990 & 1.0 & 1.0 & 1.0 & 1.0 & 0.980 & 1.0 & 0.911 & 1.0\\
 				McTwo \(Acc\) & 1.0 & 0.95 & 0.9 & 1.0 & 0.85 & 1.0 & 0.75 & 0.8 & 0.88 & 0.85 & 1.0 & 1.0 & 0.97 & 0.95 & 1.0 & 0.81 & 0.85\\
-				MGRFE Genes & 3 & 3 & 6 & 2 & 7 & 1 & 8 & 8 & 6 & 7 & 3 & 1 & 3 & 3 & 2 & 7 & 4\\
+				MGRFE Genes & 3 & 4 & 6 & 2 & 7 & 1 & 8 & 8 & 6 & 7 & 3 & 1 & 3 & 3 & 2 & 7 & 4\\
 				McTwo Genes & 4 & 3 & 6 & 2 & 7 & 1 & 2 & 5 & 2 & 4 & 4 & 2 & 3 & 4 & 2 & 6 & 1\\
 				\bottomrule
 		\end{tabular}}
@@ -473,10 +474,13 @@
 		\end{threeparttable}}
 	\end{table*}
 
+
+
+
 	\subsection{Biological inferences of the genes selected by MGRFE}
 	
 	The genes selected by MGRFE also have close relevance to the phenotypes in gene expression datasets. The genes selected by MGRFE with the 100\% 5-fold CV $Acc$ on datasets Leuk, Gas, and ALL1 are only two genes, three genes, and one gene, respectively.
-	For each gene selected by MGRFE on these three datasets, we surveyed the number of published literatures involving the gene of interest and the related cancer phenotype in PubMed on 9th July, 2018. The literature-mining results on these three datasets are shown in Table \ref{Tab:mining}. Moreover, the gene probes finally selected by MGRFE on all 19 datasets are provided in the S5 section of the Supplementary Material.
+	For each gene selected by MGRFE on these three datasets, we surveyed the number of published literatures involving the gene of interest and the related cancer phenotype in PubMed on 9th July, 2018. The literature-mining results on these three datasets are shown in Table \ref{Tab:mining}. Moreover, the gene probes finally selected by MGRFE on all 19 datasets are provided in the "S5" section of the Supplementary Material.
 	In the Leukaemia dataset, our selected genes are \textit{CD33} and \textit{TCF3}. In PubMed, there are 3001 published literatures about \textit{CD33}, among which 1753 (58.94\%) papers discuss the relevance of \textit{CD33} to leukemia. And there are 569 publications about \textit{TCF3} in PubMed, among which 115 (20.21\%) papers confirming the association between \textit{TCF3} and leukemia. According to GeneCards, the E protein encoded by \textit{TCF3} performs a critical function in lymphopoiesis and is necessary for B and T lymphocytes. This gene is related to cancers including ALL (t(1;19), with \textit{PBX1}), childhood leukemia (t(19;19), with \textit{TFPT}), and acute leukemia (t(12;19)). In the Gastric dataset, genes \textit{COL8A1}, \textit{SEMA6D}, and \textit{LIFR} are selected by MGRFE, and there are 187 publications in PubMed confirming their relevance to cancer, but only five papers reveal their relations with gastric cancer. According to the excellent classification performance of these three genes on gastric cancer, they could be novel biomarker candidates for gastric cancer. In the ALL1 dataset, only one gene, \textit{CD3D}, is selected by MGRFE. There are 84 publications in PubMed about \textit{CD3D}, among which 13 (15.48\%) papers revealing the relevance of \textit{CD3D} to leukemia. In ref. \cite{Y34}, it has also been pointed out that gene \textit{CD3D} is one ideally discriminatory feature and gave a diagnostic rule when the expression of \textit{CD3D} is below a certain cutoff limit. Regarding \textit{CD3D}, GeneCards explains that this gene is involved in T-cell development and signal transduction, whereas defects in this gene will lead to severe combined immunodeficiency.
 
 	\section{Discussion}
@@ -492,13 +496,17 @@
 	
 	The 19 popular benchmark microarray datasets including multiclass and imbalanced datasets are employed to validate MGRFE. According to the performance comparison with other algorithms from 20 other studies, our proposed MGRFE is proved to be superior to most of the current state-of-the-art feature selection methods. MGRFE offers smaller informative gene subsets but the same or higher phenotype diagnosis accuracies. Many promising results are obtained by MGRFE on these datasets. MGRFE can reach $Acc$ 100\% within only five genes for 10 (52.6\%) of 19 datasets, and $Acc$ higher than 90\% within 10 genes for all 19 datasets, in 5-fold CV. MGRFE also possesses strong robustness for multiclass datasets and imbalanced datasets according to metrics $Sn$, $Sp$, $Avc$, $MCC$, and $AUC$.
 	
-	Furthermore, the biological associations with phenotypes using literature mining in PubMed for the selected genes confirmed that the genes selected by MGRFE are biologically relevant to cancer phenotypes. Therefore, the informative genes selected by MGRFE could be novel biomarker candidates that are useful for better understanding the molecule mechanism related to the phenotypes. Moreover, for clinical applications involving microarrays, MGRFE can contribute to the development of a potential simplified procedure for diagnosis of cancer subgroups by selecting the minimal discriminatory gene subsets, which will cut down the cost of medical diagnoses.
+	To conclude, the chief research contribution in theory is providing a novel feature selection method which combines embedded genetic algorithm with recursive feature elimination process, working as a creative thought for future research. To the best of our knowledge, none previous studies have designed an evolutionary algorithm using variable length integer encoding approach in a recursive manner to deal with the problem of minimal discriminatory feature selection in high-dimension datasets, which is described in this paper. Meanwhile, through theoretical and experimental comparisons, our proposed MGRFE could outperform mostly other state-of-the-art algorithms for gene selection on microarray data. Therefore, the proposed method MGRFE is worthy to be generalized to more feature selection problems on high-dimensional data characterized by the ”large \textit{p} small \textit{n}” paradigm and applied in several practical fields.
+
+	Furthermore, our presented MGRFE would be useful in medical diagnosis as well as further biomedical research. The biological associations with phenotypes using literature mining in PubMed for the selected genes confirmed that the genes selected by MGRFE are biologically relevant to cancer phenotypes. Therefore, the informative genes selected by MGRFE could be novel biomarker candidates that are useful for better understanding the molecule mechanism related to the phenotypes and developing potential early detection and molecularly-targeted therapies for cancer diseases. Moreover, for clinical applications involving microarrays, MGRFE can contribute to the development of a potential simplified procedure for diagnosis of cancer subgroups by selecting the minimal discriminatory gene subsets, which will cut down the cost of medical diagnoses. 
 
 
 \section*{Acknowledgments}
 
 	The authors would like to thank the National Natural Science Foundation of China [Grant number 61472158, 71774154] and the Natural Science Foundation of Jilin Province (20180101331JC).
-	
+	Also, we are grateful to the two revered reviewers for their constructive comments.
+
+
 \bibliographystyle{IEEEtran}
 \bibliography{tcbb-bib}
 	
